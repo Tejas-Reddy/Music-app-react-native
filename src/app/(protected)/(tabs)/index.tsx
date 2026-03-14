@@ -1,6 +1,6 @@
-import { FlatList } from "react-native";
-import books from "../../dummyBooks";
-import BookListItem from "../../components/BookListItem";
+import { FlatList } from "react-native";;
+import books from '../../../dummyBooks'
+import BookListItem from '../../../components/BookListItem'
 
 export default function App() {
   return (
