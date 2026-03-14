@@ -1,11 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import './global.css'
+import books from './src/dummyBooks'
+import BookListItem from './src/components/BookListItem';
 
 export default function App() {
   return (
-    <View className='bg-slate-950 flex-1 items-center justify-center'>
-      <Text className='text-2xl text-gray-100 font-bold'>Hello World</Text>
+    <View className='bg-slate-800 flex-1 p-4 justify-center'>
+      {books.map((book, i) => (
+        <BookListItem key={i} book={book}/>
+      ))}
       <StatusBar style="auto" />
     </View>
   );
