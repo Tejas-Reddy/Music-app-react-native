@@ -1,11 +1,23 @@
-import { Feather, MaterialIcons } from "@expo/vector-icons";
-import { Tabs } from "expo-router";
+import { useAuth } from "@clerk/expo";
+import { Feather, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { Redirect, Tabs } from "expo-router";
+import { ActivityIndicator } from "react-native";
 
 export default function TabsLayout() {
+    const {isSignedIn, isLoaded} = useAuth();
+
+    if(!isLoaded) {
+        return <ActivityIndicator />
+    }
+
+    if(!isSignedIn) {
+        return <Redirect href='/sign-in' />
+    }
     return (
         <Tabs>
             <Tabs.Screen name="index" options={{title: 'Library', tabBarIcon: ({color, size}) => <MaterialIcons name="library-music" size={size} color={color} />}} />
             <Tabs.Screen name="discover" options={{title: 'Discover', tabBarIcon: ({color, size}) => <Feather name="search" size={size} color={color} /> }}/>
+            <Tabs.Screen name="profile" options={{title: 'Profile', tabBarIcon: ({color, size}) => <MaterialCommunityIcons name="account-outline" size={size} color={color} /> }}/>
         </Tabs>
     )
 }

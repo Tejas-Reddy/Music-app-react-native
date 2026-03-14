@@ -32,7 +32,9 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "@clerk/expo",
+      "expo-secure-store"
     ]
   }
 }
