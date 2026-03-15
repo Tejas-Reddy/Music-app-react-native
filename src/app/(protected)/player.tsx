@@ -13,6 +13,10 @@ export default function PlayerScreen() {
 
   const playerStatus = useAudioPlayerStatus(player)
 
+  const seekTo = (seconds: number) => {
+    player.seekTo(seconds)
+  }
+
   return (
     <SafeAreaView className="flex-1 bg-gray-900 p-4 py-10 gap-4">
       <Pressable
@@ -30,7 +34,7 @@ export default function PlayerScreen() {
         <Text className="text-white text-2xl font-bold text-center">
           {book.title}
         </Text>
-        <PlayBackBar currentTime={playerStatus.currentTime} duration= {playerStatus.duration} />
+        <PlayBackBar onSeek={(seconds) => player.seekTo(seconds)} currentTime={playerStatus.currentTime} duration= {playerStatus.duration} />
 
         <View className="flex-row items-center justify-between">
           <Ionicons name="play-skip-back" size={24} color="white" />
